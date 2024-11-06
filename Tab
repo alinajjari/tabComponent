@@ -1,0 +1,43 @@
+import { useState } from "react";
+
+const tabDate = [
+  {
+    id: 1,
+    title: "One Tab",
+    dec: "One Tab Content Test"
+  },
+  {
+    id: 2,
+    title: "Tow Tab",
+    dec: "Tow Tab Content Test"
+  },
+  {
+    id: 3,
+    title: "Tree Tab",
+    dec: "Tree Tab Content Test"
+  }
+]
+
+function TabProduct() {
+  const [ActiveTab, SetActiveTab] = useState(1)
+  function tab(e) {
+    SetActiveTab(e)
+  }
+
+  return (
+    <div className="tab">
+    <div className="Tab__header">
+     {
+      tabDate.map((test)=>{
+        return(
+          <button onClick={()=>{tab(test.id)}} key={test.id} className={ActiveTab === test.id ? "active__tab" : ""}>{test.title}</button>
+        )
+      })
+     }
+    </div>
+    <div className="tab__footer">{tabDate[ActiveTab - 1].dec}</div>
+</div>
+  )
+}
+
+export default TabProduct
